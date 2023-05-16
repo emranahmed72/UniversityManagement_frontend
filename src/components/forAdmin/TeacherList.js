@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function TeacherList() {
     const token = localStorage.getItem('token');
-    const [teacher, setteacher] = useState({});
+    const [teacher, setteacher] = useState([]);
 
     
 //get teacher info
@@ -35,7 +35,39 @@ const teacherlist = async () => {
 
 
   return (
-    <div>TeacherList</div>
+    <div>
+      
+      <h1 style={{ textAlign: 'center', backgroundColor: '#DBDFAA',color: 'black' }}> TeacherList </h1>
+
+
+      <div style={{ textAlign: 'center', backgroundColor: '#DBDFAA',color: 'black' }}>
+      
+      {teacher && (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {teacher.map((teacherVal) => (
+              <tr key={teacherVal.id}>
+                <td>{teacherVal.name}</td>
+                <td>{teacherVal.email}</td>
+                <td>{teacherVal.phone}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      </div>
+
+
+
+    </div>
+    
   );
 }
 
